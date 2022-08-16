@@ -18,3 +18,8 @@ Route::get('/', function () {
 });
 
 Route::resource('banners','App\Http\Controllers\BannersController');
+Route::get('{zip}/{street}','App\Http\Controllers\BannersController@show');
+Route::post('{zip}/{street}/photos','App\Http\Controllers\BannersController@addPhotos')->name('addPhoto');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -17,7 +17,20 @@ class Banner extends Model
 'description',
     ];
     use HasFactory;
+
+    public function scopelocatedAt($query ,$zip,$street){
+        $street=str_replace('-',' ',$street);
+        return $query->where(compact('zip','street'));
+    }
+
+    public function getPriceAttribute($price){
+        return '$' .number_format($price);
+    }
+    public function getDescriptionAttribute($description){
+       //nl2br not safe bescouse hacker can injesction in space
+        return nl2br($description);
+    }
     public function photos(){
-        return $this->hasMany(App\Models\Photo::class);
+        return $this->hasMany(Photo::class);
     }
 }

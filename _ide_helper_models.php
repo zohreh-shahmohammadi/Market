@@ -24,7 +24,10 @@ namespace App\Models{
  * @property string $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Photo[] $photos
+ * @property-read int|null $photos_count
  * @method static \Database\Factories\BannerFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner locatedAt($zip, $street)
  * @method static \Illuminate\Database\Eloquent\Builder|Banner newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Banner newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Banner query()
@@ -48,16 +51,17 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $banner_id
- * @property string $photo
+ * @property string $path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Banner $banner
  * @method static \Illuminate\Database\Eloquent\Builder|Photo newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Photo newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Photo query()
  * @method static \Illuminate\Database\Eloquent\Builder|Photo whereBannerId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Photo whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Photo whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Photo wherePhoto($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Photo wherePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Photo whereUpdatedAt($value)
  */
 	class Photo extends \Eloquent {}
