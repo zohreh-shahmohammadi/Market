@@ -50,7 +50,9 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $banner_id
+ * @property string $name
  * @property string $path
+ * @property string $thumbnail_path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Banner $banner
@@ -60,7 +62,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Photo whereBannerId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Photo whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Photo whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Photo whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Photo wherePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Photo whereThumbnailPath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Photo whereUpdatedAt($value)
  */
 	class Photo extends \Eloquent {}

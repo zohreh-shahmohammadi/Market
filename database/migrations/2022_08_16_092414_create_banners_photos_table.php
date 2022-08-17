@@ -18,7 +18,9 @@ return new class extends Migration
             $table->BigInteger('banner_id')->unsigned();
             $table->foreign('banner_id')->references('id')->on('banners')
             ->onDelete('cascade')->onUpdate('cascade');
+            $table->string('name');
             $table->string('path');
+            $table->string('thumbnail_path');
             $table->timestamps();
         });
     }

@@ -7,9 +7,16 @@ use App\Models\Banner;
 use App\Models\Photo;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile as FileUploadedFile;
 
 class BannersController extends Controller
 {
+//effect you can not access to function create,store,show
+public function __construct()
+{
+    $this->middleware('auth');
+}
+
     /**
      * Display a listing of the resource.
      *
@@ -75,10 +82,15 @@ $banner->photos()->create(['path' => "/banners/photos/{$name}"]);
 return 'Done';*/
 
 //or another methods
- $photo=Photo::fromForm($request->file('photo'));
- $banner=Banner::locatedAt($zip,$street)->addPhoto($photo);
+ //$photo=Photo::fromForm($request->file('photo'));
+ $photo = $this->makePhoto($request->file('photo'));
+ Banner::locatedAt($zip,$street)->addPhoto($photo);
  
 
+}
+
+public function makePhoto(FileUploadedFile $file){
+   return Photo::named($file->getClientOriginalName())->move($file);
 }
     /**
      * Show the form for editing the specified resource.
