@@ -54,8 +54,9 @@ class BannersController extends Controller
      */
     public function show($zip,$street)
     {
-      
-       $banner = Banner::locatedAt($zip,$street)->first();
+      //there is 2 methods in banner.php
+      // $banner = Banner::locatedAt($zip,$street)->first();
+        $banner = Banner::locatedAt($zip,$street);
         return view('banners.show',compact('banner'));
         
     }
@@ -63,12 +64,21 @@ public function addPhotos($zip,$street,Request $request){
     $this->validate($request,[
 'photo' => 'required|mimes:jpg,png,bmp'
     ]);
-$file = $request->file('photo');
-$name = time() . $file->getClientOriginalName();
+    //there is 2 methods
+/* $file = $request->file('photo');
+ $name = time() . $file->getClientOriginalName();
  $file->move('banners/photos',$name);
- $banner = Banner::locatedAt($zip,$street)->first();
- $banner->photos()->create(['path' => "/banners/photos/{$name}"]);
- return 'Done';
+ $banner=Banner::locatedAt($zip,$street);
+ //or
+// $banner=Banner::locatedAt($zip,$street)->first();
+$banner->photos()->create(['path' => "/banners/photos/{$name}"]);
+return 'Done';*/
+
+//or another methods
+ $photo=Photo::fromForm($request->file('photo'));
+ $banner=Banner::locatedAt($zip,$street)->addPhoto($photo);
+ 
+
 }
     /**
      * Show the form for editing the specified resource.

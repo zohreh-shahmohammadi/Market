@@ -27,7 +27,6 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Photo[] $photos
  * @property-read int|null $photos_count
  * @method static \Database\Factories\BannerFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Banner locatedAt($zip, $street)
  * @method static \Illuminate\Database\Eloquent\Builder|Banner newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Banner newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Banner query()

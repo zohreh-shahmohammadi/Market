@@ -10,7 +10,7 @@
    <div>
       @foreach($banner->photos as $photo)
      
-      <img src="{{$photo->path}}" alt="" width="100px">
+      <img src="/{{$photo->path}}" alt="" width="100px">
       @endforeach
    </div>
    <hr>

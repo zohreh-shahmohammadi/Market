@@ -17,11 +17,15 @@ class Banner extends Model
 'description',
     ];
     use HasFactory;
-
-    public function scopelocatedAt($query ,$zip,$street){
+    public static function locatedAt($zip,$street){
+        $street=str_replace('-',' ',$street);
+        return static::where(compact('zip','street'))->first();
+    }
+    //or
+   /* public function scopelocatedAt($query ,$zip,$street){
         $street=str_replace('-',' ',$street);
         return $query->where(compact('zip','street'));
-    }
+    }*/
 
     public function getPriceAttribute($price){
         return '$' .number_format($price);
@@ -32,5 +36,8 @@ class Banner extends Model
     }
     public function photos(){
         return $this->hasMany(Photo::class);
+    }
+    public function addPhoto(Photo $photo){
+        return $this->photos()->save($photo);
     }
 }
