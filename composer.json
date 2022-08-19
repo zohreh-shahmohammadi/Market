@@ -12,7 +12,6 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
-        "ext-gd": "*",
         "realrashid/sweet-alert": "^5.1"
     },
     "require-dev": {

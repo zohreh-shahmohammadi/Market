@@ -19,9 +19,12 @@ Route::get('/', function () {
 
 Route::resource('banners','App\Http\Controllers\BannersController');
 Route::get('{zip}/{street}','App\Http\Controllers\BannersController@show');
-Route::post('{zip}/{street}/photos','App\Http\Controllers\BannersController@addPhotos')->name('addPhoto');
+//Route::post('{zip}/{street}/photos','App\Http\Controllers\BannersController@addPhotos')->name('addPhoto');
+Route::post('{zip}/{street}/photos','App\Http\Controllers\PhotosController@store')->name('addPhoto');
 //OR//
 //Route::post('{zip}/{street}/photos',['as' => 'store_photo_path','use' => 'App\Http\Controllers\BannersController@addPhotos']);
+
+Route::delete('/photos/{id}','App\Http\Controllers\PhotosController@destroy');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

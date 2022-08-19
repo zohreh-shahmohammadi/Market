@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+        public function banner(){
+            return $this->hasMany(Banner::class);
+        }
+        public function publish(Banner $banner){
+            $this->banner()->save($banner);
+        }
+       public function  owns($relation){
+       return $relation->user_id == $this->id;
+       }
+    
 }

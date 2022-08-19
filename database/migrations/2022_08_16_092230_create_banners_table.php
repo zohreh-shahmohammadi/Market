@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id()->unsigned();
+            $table->BigInteger('user_id')->unsigned();
             $table->string('street',40);
             $table->string('city',40);
             $table->string('zip',15);
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->integer('price');
             $table->text('description');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

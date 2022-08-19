@@ -17,6 +17,14 @@ class Banner extends Model
 'description',
     ];
     use HasFactory;
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function ownedBy(User $user){
+       return $this->user_id == $user->id;
+
+    }
     public static function locatedAt($zip,$street){
         $street=str_replace('-',' ',$street);
         return static::where(compact('zip','street'))->first();
@@ -40,4 +48,5 @@ class Banner extends Model
     public function addPhoto(Photo $photo){
         return $this->photos()->save($photo);
     }
+   
 }

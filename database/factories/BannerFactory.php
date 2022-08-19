@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use phpDocumentor\Reflection\PseudoTypes\True_;
 
@@ -18,6 +19,8 @@ class BannerFactory extends Factory
     public function definition()
     {
         return [
+         
+            'user_id' => User::all()->random()->id,
             'street' => fake()->streetAddress(),
             'city' => fake()->city(),
             'zip' => fake()->postcode(),

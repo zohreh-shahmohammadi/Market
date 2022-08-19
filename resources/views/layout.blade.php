@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" />
-
+    <link rel="stylesheet" href= "{{url('/css/lity.css')}}" />
     <title>Bonghah</title>
 </head>
 <body>
@@ -44,6 +44,8 @@
             </li>
         @endguest
     </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{url('/js/lity.js')}}"></script>
     <section class="container">
         @yield('content')
     </section>
